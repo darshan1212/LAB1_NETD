@@ -1,0 +1,67 @@
+﻿<Window x:Name="frmIncInc" x:Class="LAB1_NETD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LAB1_NETD"
+        mc:Ignorable="d"
+        Title="IncInc" Height="327.384" Width="504.496" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+
+        </Grid.RowDefinitions>
+        <Label x:Name="lblWorkerName" Content="Worker _Name:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
+        <TextBox x:Name="txtWorkerName" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" Margin="0.8,0,0,4.6" TabIndex="1" ToolTip="Enter worker name"/>
+
+
+        <Label x:Name="lblMsgSent" Content="Messages _Sent:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <TextBox x:Name="txtMessageSent" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" Margin="0.8,0,0,4.6" TabIndex="2" ToolTip="enter number of messages sent by the worker"/>
+
+
+        <Label x:Name="lblTotalPay" Content="Total Pay:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Label x:Name="lblResultTotalPay" Content="$ 0.00" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" ToolTip="Total pay of the worker"/>
+
+        <Label x:Name="lblWorkersTotalPay" Content="All Workers Total Pay:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Label x:Name="lblResultWorkersTotalPay" Content="$ 0.00" Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" ToolTip="total pay of all the worker"/>
+
+        <Label x:Name="lblAveragePay" Content="Average Pay:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Label x:Name="lblResultAveragePay" Content="$ 0.00" Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" ToolTip="average pay of all the worker"/>
+
+
+
+
+        <Grid Grid.Row="7" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnCalculatePay" Content="_Calculate Pay" HorizontalAlignment="Center" Margin="42,0,23.4,-0.4" Width="90" Grid.Column="0" Click="BtnCalculatePay_Click" TabIndex="3" />
+            <Button x:Name="btnClearFields" Content="C_lear Fields" HorizontalAlignment="Center" Margin="42,0,23.4,-0.4" Width="90" Grid.Column="1" Click="BtnClearFields_Click" TabIndex="4"/>
+            <Button x:Name="btnExit" Content="E_xit" HorizontalAlignment="Center" Margin="42,0,23.4,-0.4" Width="90" Grid.Column="2" Click="BtnExit_Click" TabIndex="5"/>
+
+
+
+
+        </Grid>
+
+
+    </Grid>
+
+
+</Window>
