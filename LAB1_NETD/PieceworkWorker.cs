@@ -108,6 +108,8 @@ namespace LAB1_NETD // Ensure this namespace matches your own
 
             }
 
+
+            // updating the shared variables
             overallNumberOfEmployees++;
             overallPayroll += employeePay;
             overallMessages += employeeMessages;
@@ -280,3 +282,13 @@ namespace LAB1_NETD // Ensure this namespace matches your own
 
     }
 }
+
+
+//////////////•	1 bonus stock if a block comment is included at the very bottom of your
+///worker class code file that briefly answers the question, “Why are some property procedures
+///in this class read/write while others are read-only?”, including reference to at least one example of each from this lab
+///
+/////////////////////////Answer////////////////////////////////////
+// For this program, if we look according to business perspective the only thing that is changed by the user is 
+// the name and the messages, so those must have a set and the get values. Creating unnecessary get and set without requirements
+// may cause security issues and it hinders the class definition. So the OOP concepts play important part here.
