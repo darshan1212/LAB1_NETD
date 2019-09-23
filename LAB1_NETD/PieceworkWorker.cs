@@ -108,6 +108,10 @@ namespace LAB1_NETD // Ensure this namespace matches your own
 
             }
 
+            overallNumberOfEmployees++;
+            overallPayroll += employeePay;
+            overallMessages += employeeMessages;
+
 
 
         }
@@ -115,15 +119,7 @@ namespace LAB1_NETD // Ensure this namespace matches your own
         /// <summary>
         /// Updating all three shared values 
         /// </summary>
-        public void UpdateSharedValues()
-        {
-
-            overallNumberOfEmployees++;
-            overallPayroll += employeePay;
-            overallMessages += employeeMessages;
-
-        }
-
+    
       
 
         #endregion
@@ -142,11 +138,20 @@ namespace LAB1_NETD // Ensure this namespace matches your own
             }
             set
             {
+             
                 // validating if the string is empty and also checking if there are more than 2 aphabets in the string
                 // source: https://stackoverflow.com/questions/12884610/how-to-check-if-a-string-contains-any-letter-from-a-to-z
 
-                if (String.IsNullOrEmpty(value) || Regex.Matches(value, @"[a-zA-Z]").Count < 2)
+                if (String.IsNullOrEmpty(value))
+                {
                     isValid = false;
+                    throw new Exception("Name cannot be Empty");
+                }
+                else if (Regex.Matches(value, @"[a-zA-Z]").Count < 2)
+                {
+                    isValid = false;
+                    throw new Exception("Name must contain atleast 2 letter alphabet");
+                }
                 else employeeName = value;
                 
             }
@@ -165,18 +170,22 @@ namespace LAB1_NETD // Ensure this namespace matches your own
             set
             {
                 
-                if (String.IsNullOrEmpty(value))
-                    isValid = false;
-                else
-                {
-                    if (!int.TryParse(value, out employeeMessages))
-                        isValid = false;
-                    else
-                    {
-                        if (employeeMessages <= 0)
-                            isValid = false;
-                    }
+              
 
+                if(String.IsNullOrEmpty(value))
+                {
+                    isValid = false;
+                    throw new Exception("Messages cannot be empty");
+                }
+                else if(!int.TryParse(value, out employeeMessages))
+                {
+                    isValid = false;
+                    throw new Exception("Messages value must be an integer");
+                }
+                else if(employeeMessages<0)
+                {
+                    isValid = false;
+                    throw new Exception("Messages must be greater than 0");
                 }
 
 
