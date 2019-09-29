@@ -1,0 +1,35 @@
+﻿<Window x:Class="LAB1_NETD.SummaryForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LAB1_NETD"
+        mc:Ignorable="d"
+        Title="Worker Summary" Height="292" Width="450" Icon="Resources/incIcon.png" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Content="Total Workers:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"></Label>
+        <Label Content="Total Messages:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"></Label>
+        <Label Content="Total Pay:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2"></Label>
+        <Label Content="Average Pay:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"></Label>
+
+        <Label x:Name="lblTotalWorkers" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"></Label>
+        <Label x:Name="lblToalMessages" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"></Label>
+        <Label x:Name="lblTotalPay" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"></Label>
+        <Label x:Name="lblAveragePay" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"></Label>
+
+        <Button x:Name="btnCloseSummary" Content="_Close Summary" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Background="#FFE4B1B1" Width="90" Height="36" Click="BtnClose_Click" AutomationProperties.AccessKey="ESC" IsCancel="True" ToolTip="Close Summary"/>
+    </Grid>
+</Window>

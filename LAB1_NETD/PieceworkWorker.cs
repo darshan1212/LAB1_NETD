@@ -23,8 +23,6 @@ namespace LAB1_NETD // Ensure this namespace matches your own
 
        
 
-        private bool isValid = true;
-
         // Shared class variables
         private static int overallNumberOfEmployees = 0;
         private static int overallMessages = 0;
@@ -47,7 +45,7 @@ namespace LAB1_NETD // Ensure this namespace matches your own
             // Validate Validate and set the worker's number of messages
             this.Messages = messagesValue;
             // Calculcate the worker's pay and update all summary values
-            if(isValid)findPay();
+            findPay();
         }
 
         /// <summary>
@@ -146,13 +144,11 @@ namespace LAB1_NETD // Ensure this namespace matches your own
 
                 if (String.IsNullOrEmpty(value))
                 {
-                    isValid = false;
-                    throw new Exception("Name cannot be Empty");
+                    throw new ArgumentNullException("Name", "Do not leave this empty");
                 }
                 else if (Regex.Matches(value, @"[a-zA-Z]").Count < 2)
                 {
-                    isValid = false;
-                    throw new Exception("Name must contain atleast 2 letter alphabet");
+                    throw new ArgumentException("Name must contain atleast 2 alphabets", "Name");
                 }
                 else employeeName = value;
                 
@@ -176,18 +172,19 @@ namespace LAB1_NETD // Ensure this namespace matches your own
 
                 if(String.IsNullOrEmpty(value))
                 {
-                    isValid = false;
-                    throw new Exception("Messages cannot be empty");
+                    throw new ArgumentNullException("Message", "You cannot leave this empty");
                 }
                 else if(!int.TryParse(value, out employeeMessages))
                 {
-                    isValid = false;
-                    throw new Exception("Messages value must be an integer");
+                    throw new ArgumentException("You must enter numeric value", "Message");
+                }
+                else if (employeeMessages > Int32.MaxValue)
+                {
+                    throw new ArgumentOutOfRangeException("Message", "Too large value!!");
                 }
                 else if(employeeMessages<0)
                 {
-                    isValid = false;
-                    throw new Exception("Messages must be greater than 0");
+                    throw new ArgumentException("Messages must be greater than 0","Message");
                 }
 
 
@@ -263,20 +260,6 @@ namespace LAB1_NETD // Ensure this namespace matches your own
                 
             }
         }
-
-        /// <summary>
-        /// Return class state if the entered values are good or not
-        /// </summary>
-        /// <return> if the user entered value follows the condition</return>
-        public  Boolean isObjectValid
-        {
-            get
-            {
-                return isValid;
-            }
-
-        }
-
 
         #endregion
 

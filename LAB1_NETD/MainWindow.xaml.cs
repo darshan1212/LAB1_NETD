@@ -25,7 +25,6 @@ namespace LAB1_NETD
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
@@ -39,21 +38,13 @@ namespace LAB1_NETD
             try
             {
 
-                PieceworkWorker pieceworkWorker = new PieceworkWorker(txtWorkerName.Text,txtMessageSent.Text);
+                    PieceworkWorker pieceworkWorker = new PieceworkWorker(txtWorkerName.Text,txtMessageSent.Text);
+              
 
-                // Check if user entered input are valid or not
-                if (pieceworkWorker.isObjectValid)
-                {
                     //Show the output in labels
                     lblResultTotalPay.Content = "$ " + string.Format("{0:0.00}", pieceworkWorker.Pay, 2);
 
-                    // updating shared values
-                    //pieceworkWorker.UpdateSharedValues();
-
-                    //Show the output in labels
-                    lblResultWorkersTotalPay.Content = "$ " + string.Format("{0:0.00}", PieceworkWorker.TotalPay);
-                    lblResultAveragePay.Content = "$ " + string.Format("{0:0.00}", PieceworkWorker.AveragePay);
-
+                  
                     // disable calculate button and entry fields
                     btnCalculatePay.IsEnabled = false;
                     txtMessageSent.IsEnabled = false;
@@ -62,12 +53,48 @@ namespace LAB1_NETD
 
                     // focus on the clear button
                     btnClearFields.Focus();
-
-
-                }
                
             }
-            catch(Exception excep)
+            catch(ArgumentNullException ex)
+            {
+                if(ex.ParamName=="Name")
+                {
+                    lblWorkerNameError.Content = ex.Message;
+                    txtWorkerName.Focus();
+                }
+                else if(ex.ParamName=="Message")
+                {
+                    lblMessageSentError.Content = ex.Message;
+                    txtMessageSent.Focus();
+                }
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                if (ex.ParamName == "Name")
+                {
+                    lblWorkerNameError.Content = ex.Message;
+                    txtWorkerName.Focus();
+                }
+                if (ex.ParamName == "Message")
+                {
+                    lblMessageSentError.Content = ex.Message;
+                    txtMessageSent.Focus();
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                if (ex.ParamName == "Name")
+                {
+                    lblWorkerNameError.Content = ex.Message;
+                    txtWorkerName.Focus();
+                }
+                if (ex.ParamName == "Message")
+                {
+                    lblMessageSentError.Content = ex.Message;
+                    txtMessageSent.Focus();
+                }
+            }
+            catch (Exception excep)
             {
                 // showing the message that cause interruption
                 MessageBox.Show(excep.Message);
@@ -120,6 +147,23 @@ namespace LAB1_NETD
             txtWorkerName.Clear();
             lblResultTotalPay.Content = "";
 
+        }
+
+
+        private void BtnSummary_Click(object sender, RoutedEventArgs e)
+        {
+            (new SummaryForm()).Show();
+        }
+
+
+        private void TxtWorkerName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            lblWorkerNameError.Content = String.Empty;
+        }
+
+        private void TxtMessageSent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            lblMessageSentError.Content = String.Empty;
         }
     }
 }
