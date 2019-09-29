@@ -28,6 +28,10 @@ namespace LAB1_NETD // Ensure this namespace matches your own
         private static int overallMessages = 0;
         private static decimal overallPayroll = 0;
 
+        // constant variables
+
+        private const int UPPER_BOUND = 20000;
+
         #endregion
 
         #region "Constructors"
@@ -178,9 +182,9 @@ namespace LAB1_NETD // Ensure this namespace matches your own
                 {
                     throw new ArgumentException("You must enter numeric value", "Message");
                 }
-                else if (employeeMessages > Int32.MaxValue)
+                else if (employeeMessages > UPPER_BOUND)
                 {
-                    throw new ArgumentOutOfRangeException("Message", "Too large value!!");
+                    throw new ArgumentOutOfRangeException("Message","Please, Not more than "+UPPER_BOUND+"!");
                 }
                 else if(employeeMessages<0)
                 {

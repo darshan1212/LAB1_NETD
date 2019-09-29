@@ -60,11 +60,13 @@ namespace LAB1_NETD
                 if(ex.ParamName=="Name")
                 {
                     lblWorkerNameError.Content = ex.Message;
+                    txtWorkerName.Background = Brushes.Red;
                     txtWorkerName.Focus();
                 }
                 else if(ex.ParamName=="Message")
                 {
                     lblMessageSentError.Content = ex.Message;
+                    txtWorkerName.Background = Brushes.Red;
                     txtMessageSent.Focus();
                 }
             }
@@ -73,11 +75,14 @@ namespace LAB1_NETD
                 if (ex.ParamName == "Name")
                 {
                     lblWorkerNameError.Content = ex.Message;
+                    txtWorkerName.Background = Brushes.Red;
                     txtWorkerName.Focus();
                 }
                 if (ex.ParamName == "Message")
                 {
                     lblMessageSentError.Content = ex.Message;
+                    txtMessageSent.Background = Brushes.Red;
+
                     txtMessageSent.Focus();
                 }
             }
@@ -86,11 +91,13 @@ namespace LAB1_NETD
                 if (ex.ParamName == "Name")
                 {
                     lblWorkerNameError.Content = ex.Message;
+                    txtWorkerName.Background = Brushes.Red;
                     txtWorkerName.Focus();
                 }
                 if (ex.ParamName == "Message")
                 {
                     lblMessageSentError.Content = ex.Message;
+                    txtMessageSent.Background = Brushes.Red;
                     txtMessageSent.Focus();
                 }
             }
@@ -149,21 +156,36 @@ namespace LAB1_NETD
 
         }
 
-
+        /// <summary>
+        /// it opens Summary Form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSummary_Click(object sender, RoutedEventArgs e)
         {
             (new SummaryForm()).Show();
         }
 
-
+        /// <summary>
+        /// Make Name textbox colour as it is
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TxtWorkerName_TextChanged(object sender, TextChangedEventArgs e)
         {
             lblWorkerNameError.Content = String.Empty;
+            txtWorkerName.Background = Brushes.White;
         }
 
+        /// <summary>
+        /// Make entry textbox as it is
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TxtMessageSent_TextChanged(object sender, TextChangedEventArgs e)
         {
             lblMessageSentError.Content = String.Empty;
+            txtMessageSent.Background = Brushes.White;
         }
     }
 }
