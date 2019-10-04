@@ -1,6 +1,8 @@
 ﻿// Author: Darshan Patel
-// Date: 18 Sept 2019
-// Lab 1 NetD 3201
+// Last Modified: 04 Oct 2019
+// Lab 2 NetD 3201
+// Description: Main form which will be loaded first to get input of worker name and his or her messages.
+
 
 
 using System;
@@ -32,6 +34,11 @@ namespace LAB1_NETD
             txtWorkerName.Focus();
         }
 
+        /// <summary>
+        /// This is event handler for the calculate button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnCalculatePay_Click(object sender, RoutedEventArgs e)
         {
             // Calling piece worker with name and message as input
@@ -164,6 +171,7 @@ namespace LAB1_NETD
         private void BtnSummary_Click(object sender, RoutedEventArgs e)
         {
             (new SummaryForm()).Show();
+            
         }
 
         /// <summary>
@@ -186,6 +194,11 @@ namespace LAB1_NETD
         {
             lblMessageSentError.Content = String.Empty;
             txtMessageSent.Background = Brushes.White;
+        }
+
+        private void TxtWorkerName_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+
         }
     }
 }

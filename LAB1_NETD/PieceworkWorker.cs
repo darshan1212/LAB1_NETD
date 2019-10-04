@@ -1,6 +1,8 @@
-﻿// Author: Darshan Patel
+﻿// Original Author: Kyle Chapman
+// Editor: Darshan Patel
 // Date: 18 Sept 2019
 // Lab 1 NetD 3201
+// Description: This file contain PieceworkWorker class that is required in the main application xaml file.
 
 using System;
 using System.Collections.Generic;

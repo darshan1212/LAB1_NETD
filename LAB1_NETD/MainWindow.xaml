@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAB1_NETD"
         mc:Ignorable="d"
-        Title="IncInc" Height="370.584" Width="497.296" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen">
+        Title="IncInc" Height="370.584" Width="497.296" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen" MinHeight="370.584" MinWidth="497.296">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -25,11 +25,11 @@
 
 
         </Grid.RowDefinitions>
-        <Label x:Name="lblWorkerName" Content="Worker _Name:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
-        <TextBox x:Name="txtWorkerName" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="1" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerName_TextChanged" Height="22" Foreground="Black"/>
+        <Label x:Name="lblWorkerName" Content="Worker _Name:" Target="{Binding ElementName=txtWorkerName}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
+        <TextBox x:Name="txtWorkerName" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="1" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerName_TextChanged" Height="22" Foreground="Black"/>
         <Label x:Name="lblWorkerNameError" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
 
-        <Label x:Name="lblMsgSent" Content="Messages _Sent:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Label x:Name="lblMessageSent" Content="Messages _Sent:" Grid.Row="3" Target="{Binding ElementName=txtMessageSent}" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         <TextBox x:Name="txtMessageSent" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" TabIndex="2" ToolTip="enter number of messages sent by the worker" Margin="0.4,0,0,2.2" TextChanged="TxtMessageSent_TextChanged" Height="22"/>
         <Label x:Name="lblMessageSentError" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
 
@@ -46,7 +46,7 @@
             <Button x:Name="btnCalculatePay" Content="_Calculate Pay" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="0" Click="BtnCalculatePay_Click" TabIndex="3" Background="#FFE4B1B1" ToolTip="Calculate pay" />
             <Button x:Name="btnSummary" Content="_Summary" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnSummary_Click"  TabIndex="4" Background="#FFE4B1B1" ToolTip="Open summary"/>
             <Button x:Name="btnClearFields" Content="C_lear Fields" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="2" Click="BtnClearFields_Click" TabIndex="5" Background="#FFE4B1B1" ToolTip="Clear Fileds"/>
-            <Button x:Name="btnExit" Content="E_xit" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="3" Click="BtnExit_Click" TabIndex="6" Background="#FFE4B1B1" IsCancel="True" ToolTip="Close the form"/>
+            <Button x:Name="btnExit" Content="E_xit" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="3" Click="BtnExit_Click" TabIndex="6" Background="#FFE4B1B1" IsCancel="True" ToolTip="Close the form" IsDefault="True"/>
 
         </Grid>
 

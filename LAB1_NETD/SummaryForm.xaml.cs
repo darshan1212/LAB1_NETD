@@ -1,6 +1,7 @@
 ﻿// Author: Darshan Patel
-// Date: 29 Sept 2019
+// Last Modified: 04 Oct 2019
 // Lab 2 NetD 3201
+// Description: This file is the summary form that will pop up when summary form is clicked.
 
 using System;
 using System.Collections.Generic;
@@ -36,8 +37,8 @@ namespace LAB1_NETD
             lblToalMessages.Content = PieceworkWorker.TotalMessages;
             lblTotalPay.Content = "$ " + string.Format("{0:0.00}", PieceworkWorker.TotalPay);
             lblAveragePay.Content = "$ " + string.Format("{0:0.00}", PieceworkWorker.AveragePay);
-
             btnCloseSummary.Focus();
+
         }
 
         /// <summary>
