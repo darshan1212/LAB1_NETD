@@ -6,52 +6,110 @@
         xmlns:local="clr-namespace:LAB1_NETD"
         mc:Ignorable="d"
         Title="IncInc" Height="370.584" Width="497.296" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen" MinHeight="370.584" MinWidth="497.296">
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-
+            <RowDefinition Height="80*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
 
         </Grid.RowDefinitions>
-        <Label x:Name="lblWorkerName" Content="Worker _Name:" Target="{Binding ElementName=txtWorkerName}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
-        <TextBox x:Name="txtWorkerName" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="1" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerName_TextChanged" Height="22" Foreground="Black"/>
-        <Label x:Name="lblWorkerNameError" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
+        <TabControl Grid.Row="0">
+            <TabItem Header="Payroll Form">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-        <Label x:Name="lblMessageSent" Content="Messages _Sent:" Grid.Row="3" Target="{Binding ElementName=txtMessageSent}" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <TextBox x:Name="txtMessageSent" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" TabIndex="2" ToolTip="enter number of messages sent by the worker" Margin="0.4,0,0,2.2" TextChanged="TxtMessageSent_TextChanged" Height="22"/>
-        <Label x:Name="lblMessageSentError" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
 
-        <Label x:Name="lblTotalPay" Content="Total Pay:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="5" ></Label>
-        <Label x:Name="lblResultTotalPay" Content="$ 0.0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="5"></Label>
 
-        <Grid Grid.Row="7" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="btnCalculatePay" Content="_Calculate Pay" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="0" Click="BtnCalculatePay_Click" TabIndex="3" Background="#FFE4B1B1" ToolTip="Calculate pay" />
-            <Button x:Name="btnSummary" Content="_Summary" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnSummary_Click"  TabIndex="4" Background="#FFE4B1B1" ToolTip="Open summary"/>
-            <Button x:Name="btnClearFields" Content="C_lear Fields" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="2" Click="BtnClearFields_Click" TabIndex="5" Background="#FFE4B1B1" ToolTip="Clear Fileds"/>
-            <Button x:Name="btnExit" Content="E_xit" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="3" Click="BtnExit_Click" TabIndex="6" Background="#FFE4B1B1" IsCancel="True" ToolTip="Close the form" IsDefault="True"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lblWorkerName" Content="Worker _Name:" Target="{Binding ElementName=txtWorkerName}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
+                    <TextBox x:Name="txtWorkerName" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="1" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerName_TextChanged" Height="22" Foreground="Black"/>
+                    <Label x:Name="lblWorkerNameError" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
 
+                    <Label x:Name="lblMessageSent" Content="Messages _Sent:" Grid.Row="3" Target="{Binding ElementName=txtMessageSent}" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="txtMessageSent" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" TabIndex="2" ToolTip="enter number of messages sent by the worker" Margin="0.4,0,0,2.2" TextChanged="TxtMessageSent_TextChanged" Height="22"/>
+                    <Label x:Name="lblMessageSentError" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
+
+                    <Label x:Name="lblTotalPay" Content="Total Pay:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="5" ></Label>
+                    <Label x:Name="lblResultTotalPay" Content="$ 0.0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="5"></Label>
+
+                    <Grid Grid.Row="7" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnCalculatePay" Content="_Calculate Pay" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnCalculatePay_Click" TabIndex="3" Background="#FFE4B1B1" ToolTip="Calculate pay" />
+                        <!--<Button x:Name="btnSummary" Content="_Summary" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnSummary_Click"  TabIndex="4" Background="#FFE4B1B1" ToolTip="Open summary"/>-->
+                        <Button x:Name="btnClearFields" Content="C_lear Fields" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="2" Click="BtnClearFields_Click" TabIndex="5" Background="#FFE4B1B1" ToolTip="Clear Fileds"/>
+                        <!--<Button x:Name="btnExit" Content="E_xit" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="3" Click="BtnExit_Click" TabIndex="6" Background="#FFE4B1B1" IsCancel="True" ToolTip="Close the form" IsDefault="True"/>-->
+
+                    </Grid>
+
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Summary">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="lblWorkerHeading" Content="Total Workers:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"></Label>
+                    <Label x:Name="lblMessages" Content="Total Messages:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"></Label>
+                    <Label x:Name="lblPayTotal" Content="Total Pay:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2"></Label>
+                    <Label x:Name="lblPayAverage" Content="Average Pay:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"></Label>
+
+                    <Label x:Name="lblTotalWorkers" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"></Label>
+                    <Label x:Name="lblToalMessages" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"></Label>
+                    <Label x:Name="lblTotalPay2" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"></Label>
+                    <Label x:Name="lblAveragePay" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"></Label>
+
+                    <!--<Button x:Name="btnCloseSummary" Content="_Close Summary" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"--> 
+                <!--Background="#FFE4B1B1" Width="90" Height="36" Click="BtnClose_Click" AutomationProperties.AccessKey="ESC" IsCancel="True" ToolTip="Close Summary" TabIndex="1" IsDefault="True"/>-->
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Employee List">
+                
+                
+            </TabItem>
+
+                    
+        </TabControl>
+        <Grid Grid.Row="1">
+            <Button Content="E_xit" Width="150" VerticalAlignment="Center">
+
+            </Button>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StatusBar></StatusBar>
         </Grid>
 
-
     </Grid>
-
 
 </Window>
