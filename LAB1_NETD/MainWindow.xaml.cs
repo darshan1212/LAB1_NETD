@@ -31,7 +31,14 @@ namespace LAB1_NETD
         {
             InitializeComponent();
             //focusing the first element of the form
-            txtWorkerName.Focus();
+            txtWorkerFirstName.Focus();
+
+            // Populating labels with respective values.
+            lblTotalWorkers.Content = PieceworkWorker.TotalWorkers;
+            lblToalMessages.Content = PieceworkWorker.TotalMessages;
+            lblTotalPay.Content = "$ " + string.Format("{0:0.00}", PieceworkWorker.TotalPay);
+            lblAveragePay.Content = "$ " + string.Format("{0:0.00}", PieceworkWorker.AveragePay);
+            
         }
 
         /// <summary>
@@ -45,7 +52,7 @@ namespace LAB1_NETD
             try
             {
 
-                    PieceworkWorker pieceworkWorker = new PieceworkWorker(txtWorkerName.Text,txtMessageSent.Text);
+                    PieceworkWorker pieceworkWorker = new PieceworkWorker(txtWorkerFirstName.Text,txtWorkerLastName.Text,txtMessageSent.Text);
               
 
                     //Show the output in labels
@@ -55,35 +62,48 @@ namespace LAB1_NETD
                     // disable calculate button and entry fields
                     btnCalculatePay.IsEnabled = false;
                     txtMessageSent.IsEnabled = false;
-                    txtWorkerName.IsEnabled = false;
+                    txtWorkerFirstName.IsEnabled = false;
+                    txtWorkerLastName.IsEnabled = false;
 
 
-                    // focus on the clear button
-                    btnClearFields.Focus();
+                // focus on the clear button
+                btnClearFields.Focus();
                
             }
             catch(ArgumentNullException ex)
             {
-                if(ex.ParamName=="Name")
+                if(ex.ParamName=="FirstName")
                 {
-                    lblWorkerNameError.Content = ex.Message;
-                    txtWorkerName.Background = Brushes.Red;
-                    txtWorkerName.Focus();
+                    lblWorkerFirstNameError.Content = ex.Message;
+                    txtWorkerFirstName.Background = Brushes.Red;
+                    txtWorkerFirstName.Focus();
+                }
+                else if (ex.ParamName == "LastName")
+                {
+                    lblWorkerLastNameError.Content = ex.Message;
+                    txtWorkerLastName.Background = Brushes.Red;
+                    txtWorkerLastName.Focus();
                 }
                 else if(ex.ParamName=="Message")
                 {
                     lblMessageSentError.Content = ex.Message;
-                    txtWorkerName.Background = Brushes.Red;
+                    txtMessageSent.Background = Brushes.Red;
                     txtMessageSent.Focus();
                 }
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                if (ex.ParamName == "Name")
+                if (ex.ParamName == "FirstName")
                 {
-                    lblWorkerNameError.Content = ex.Message;
-                    txtWorkerName.Background = Brushes.Red;
-                    txtWorkerName.Focus();
+                    lblWorkerFirstNameError.Content = ex.Message;
+                    txtWorkerFirstName.Background = Brushes.Red;
+                    txtWorkerFirstName.Focus();
+                }
+                if (ex.ParamName == "LastName")
+                {
+                    lblWorkerLastNameError.Content = ex.Message;
+                    txtWorkerLastName.Background = Brushes.Red;
+                    txtWorkerLastName.Focus();
                 }
                 if (ex.ParamName == "Message")
                 {
@@ -95,11 +115,17 @@ namespace LAB1_NETD
             }
             catch (ArgumentException ex)
             {
-                if (ex.ParamName == "Name")
+                if (ex.ParamName == "FirstName")
                 {
-                    lblWorkerNameError.Content = ex.Message;
-                    txtWorkerName.Background = Brushes.Red;
-                    txtWorkerName.Focus();
+                    lblWorkerFirstNameError.Content = ex.Message;
+                    txtWorkerFirstName.Background = Brushes.Red;
+                    txtWorkerFirstName.Focus();
+                }
+                if (ex.ParamName == "Last")
+                {
+                    lblWorkerLastNameError.Content = ex.Message;
+                    txtWorkerLastName.Background = Brushes.Red;
+                    txtWorkerFirstName.Focus();
                 }
                 if (ex.ParamName == "Message")
                 {
@@ -132,9 +158,11 @@ namespace LAB1_NETD
             //re-enable
             btnCalculatePay.IsEnabled = true;
             txtMessageSent.IsEnabled = true;
-            txtWorkerName.IsEnabled = true;
+            txtWorkerFirstName.IsEnabled = true;
+            txtWorkerLastName.IsEnabled = true;
+
             // focus the first field
-            txtWorkerName.Focus();
+            txtWorkerFirstName.Focus();
 
 
         }
@@ -158,7 +186,8 @@ namespace LAB1_NETD
         {
             // routing for resetting all five dynamic fields
             txtMessageSent.Clear();
-            txtWorkerName.Clear();
+            txtWorkerFirstName.Clear();
+            txtWorkerLastName.Clear();
             lblResultTotalPay.Content = "";
 
         }
@@ -179,10 +208,15 @@ namespace LAB1_NETD
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TxtWorkerName_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtWorkerFirstName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            lblWorkerNameError.Content = String.Empty;
-            txtWorkerName.Background = Brushes.White;
+            lblWorkerFirstNameError.Content = String.Empty;
+            txtWorkerFirstName.Background = Brushes.White;
+        }
+        private void TxtWorkerLastName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            lblWorkerLastNameError.Content = String.Empty;
+            txtWorkerLastName.Background = Brushes.White;
         }
 
         /// <summary>

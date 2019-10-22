@@ -32,21 +32,27 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
 
 
                     </Grid.RowDefinitions>
-                    <Label x:Name="lblWorkerName" Content="Worker _Name:" Target="{Binding ElementName=txtWorkerName}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
-                    <TextBox x:Name="txtWorkerName" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="1" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerName_TextChanged" Height="22" Foreground="Black"/>
-                    <Label x:Name="lblWorkerNameError" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
+                    <Label x:Name="lblWorkerFirstName" Content="Worker _First Name:" Target="{Binding ElementName=txtWorkerFirstName}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
+                    <TextBox x:Name="txtWorkerFirstName" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="1" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerFirstName_TextChanged" Height="22" Foreground="Black"/>
+                    <Label x:Name="lblWorkerFirstNameError" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
 
-                    <Label x:Name="lblMessageSent" Content="Messages _Sent:" Grid.Row="3" Target="{Binding ElementName=txtMessageSent}" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                    <TextBox x:Name="txtMessageSent" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" TabIndex="2" ToolTip="enter number of messages sent by the worker" Margin="0.4,0,0,2.2" TextChanged="TxtMessageSent_TextChanged" Height="22"/>
-                    <Label x:Name="lblMessageSentError" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
+                    <Label x:Name="lblWorkerLastName" Content="Worker _Last Name:" Target="{Binding ElementName=txtWorkerLastName}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
+                    <TextBox x:Name="txtWorkerLastName" Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="1" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerLastName_TextChanged" Height="22" Foreground="Black"/>
+                    <Label x:Name="lblWorkerLastNameError" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
+                    
+                    <Label x:Name="lblMessageSent" Content="Messages _Sent:" Grid.Row="5" Target="{Binding ElementName=txtMessageSent}" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="txtMessageSent" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" TabIndex="2" ToolTip="enter number of messages sent by the worker" Margin="0.4,0,0,2.2" TextChanged="TxtMessageSent_TextChanged" Height="22"/>
+                    <Label x:Name="lblMessageSentError" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
 
-                    <Label x:Name="lblTotalPay" Content="Total Pay:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="5" ></Label>
-                    <Label x:Name="lblResultTotalPay" Content="$ 0.0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="5"></Label>
+                    <Label x:Name="lblTotalPay" Content="Total Pay:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="7" ></Label>
+                    <Label x:Name="lblResultTotalPay" Content="$ 0.0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="7"></Label>
 
-                    <Grid Grid.Row="7" Grid.ColumnSpan="2">
+                    <Grid Grid.Row="9" Grid.ColumnSpan="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -94,9 +100,11 @@
 
             </TabItem>
 
-            <TabItem Header="Employee List">
+            <TabItem x:Name="tbiWorkerList" Header="_Employee List" ToolTip="Display List of employees">
                 
-                
+                <DataGrid x:Name="dgWorkerList"/>
+
+
             </TabItem>
 
                     

@@ -19,16 +19,14 @@ namespace LAB1_NETD // Ensure this namespace matches your own
         #region "Variable declarations"
 
         // Instance variables
-        private string employeeName;
+        private int employeeId;
+        private string employeeFirstName;
+        private string employeeLastName;
         private int employeeMessages;
         private decimal employeePay;
+        private DateTime entryDate;
 
-       
 
-        // Shared class variables
-        private static int overallNumberOfEmployees = 0;
-        private static int overallMessages = 0;
-        private static decimal overallPayroll = 0;
 
         // constant variables
 
@@ -38,20 +36,29 @@ namespace LAB1_NETD // Ensure this namespace matches your own
 
         #region "Constructors"
 
+        
+
         /// <summary>
         /// PieceworkWorker constructor: accepts a worker's name and number of
         /// messages, sets and calculates values as appropriate.
         /// </summary>
-        /// <param name="nameValue">the worker's name</param>
+        /// <param name="firstNameValue">the worker's name</param>
+        /// <param name="lastNameValue">the worker's name</param>
         /// <param name="messageValue">a worker's number of messages sent</param>
-        public PieceworkWorker(string nameValue, string messagesValue)
+        public PieceworkWorker(string firstNameValue,string lastNameValue, string messagesValue)
         {
-            // Validate and set the worker's name
-            this.Name = nameValue;
+            // Validate and set the worker's first name
+            this.FirstName = firstNameValue;
+            // Validate and set the worker's last name
+            this.LastName = lastNameValue;
             // Validate Validate and set the worker's number of messages
             this.Messages = messagesValue;
             // Calculcate the worker's pay and update all summary values
             findPay();
+            // getting current date and time
+            this.EntryDate = DateTime.Now;
+
+            DBL.InsertNewRecord(this);
         }
 
         /// <summary>
@@ -113,11 +120,7 @@ namespace LAB1_NETD // Ensure this namespace matches your own
             }
 
 
-            // updating the shared variables
-            overallNumberOfEmployees++;
-            overallPayroll += employeePay;
-            overallMessages += employeeMessages;
-
+         
 
 
         }
@@ -133,14 +136,14 @@ namespace LAB1_NETD // Ensure this namespace matches your own
         #region "Property Procedures"
 
         /// <summary>
-        /// Gets and sets a worker's name
+        /// Gets and sets a worker's First name
         /// </summary>
-        /// <returns>an employee's name</returns>
-        public string Name
+        /// <returns>an employee's first name</returns>
+        internal string FirstName
         {
             get
             {
-                return employeeName;
+                return employeeFirstName;
             }
             set
             {
@@ -150,22 +153,53 @@ namespace LAB1_NETD // Ensure this namespace matches your own
 
                 if (String.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException("Name", "Do not leave this empty");
+                    throw new ArgumentNullException("FirstName", "Do not leave this empty");
                 }
                 else if (Regex.Matches(value, @"[a-zA-Z]").Count < 2)
                 {
-                    throw new ArgumentException("Name must contain atleast 2 alphabets", "Name");
+                    throw new ArgumentException("First Name must contain atleast 2 alphabets", "FirstName");
                 }
-                else employeeName = value;
+                else employeeFirstName = value;
                 
             }
         }
+
+
+        /// <summary>
+        /// Gets and sets a worker's  Last name
+        /// </summary>
+        /// <returns>an employee's last name</returns>
+        internal string LastName
+        {
+            get
+            {
+                return employeeLastName;
+            }
+            set
+            {
+
+                // validating if the string is empty and also checking if there are more than 2 aphabets in the string
+                // source: https://stackoverflow.com/questions/12884610/how-to-check-if-a-string-contains-any-letter-from-a-to-z
+
+                if (String.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("LastName", "Do not leave this empty");
+                }
+                else if (Regex.Matches(value, @"[a-zA-Z]").Count < 2)
+                {
+                    throw new ArgumentException("Last Name must contain atleast 2 alphabets", "LastName");
+                }
+                else employeeLastName = value;
+
+            }
+        }
+
 
         /// <summary>
         /// Gets and sets the number of messages sent by a worker
         /// </summary>
         /// <returns>an employee's number of messages</returns>
-        public string Messages
+        internal string Messages
         {
             get
             {
@@ -201,11 +235,47 @@ namespace LAB1_NETD // Ensure this namespace matches your own
         /// Gets the worker's pay
         /// </summary>
         /// <returns>a worker's pay</returns>
-        public decimal Pay
+        internal decimal Pay
         {
             get
             {
                 return employeePay;
+            }
+            set
+            {
+                employeePay = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the worker's Id
+        /// </summary>
+        /// <returns>a worker's Id</returns>
+        internal int Id
+        {
+            get
+            {
+                return employeeId;
+            }
+            set
+            {
+                employeeId = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the worker's Entry Date
+        /// </summary>
+        /// <returns>a worker's EntryDate</returns>
+        internal DateTime EntryDate
+        {
+            get
+            {
+                return entryDate;
+            }
+            set
+            {
+                entryDate = value;
             }
         }
 
@@ -213,11 +283,11 @@ namespace LAB1_NETD // Ensure this namespace matches your own
         /// Gets the overall total pay among all workers
         /// </summary>
         /// <returns>the overall total pay among all workers</returns>
-        public static decimal TotalPay
+        internal static decimal TotalPay
         {
             get
             {
-                return overallPayroll;
+                return  Convert.ToDecimal(DBL.GetTotal(DBL.Totals.Pay));
             }
         }
 
@@ -225,11 +295,12 @@ namespace LAB1_NETD // Ensure this namespace matches your own
         /// Gets the overall number of workers
         /// </summary>
         /// <returns>the overall number of workers</returns>
-        public static int TotalWorkers
+        internal static int TotalWorkers
         {
             get
             {
-                return overallNumberOfEmployees;
+                return  Convert.ToInt32(DBL.GetTotal(DBL.Totals.Employees));
+
             }
         }
 
@@ -237,11 +308,11 @@ namespace LAB1_NETD // Ensure this namespace matches your own
         /// Gets the overall number of messages sent
         /// </summary>
         /// <returns>the overall number of messages sent</returns>
-        public static int TotalMessages
+        internal static int TotalMessages
         {
             get
             {
-                return overallMessages;
+                return Convert.ToInt32(DBL.GetTotal(DBL.Totals.Messages));
             }
         }
 
@@ -249,17 +320,17 @@ namespace LAB1_NETD // Ensure this namespace matches your own
         /// Calculates and returns an average pay among all workers
         /// </summary>
         /// <returns>the average pay among all workers</returns>
-        public static decimal AveragePay
+        internal static decimal AveragePay
         {
             get
             {
                 // TO DO
                 // Write the logic that will return the average pay among all workers. Test this carefully!
                 decimal tempDecimal;
-                if (overallNumberOfEmployees == 0)  tempDecimal = 0;
+                if (TotalWorkers == 0)  tempDecimal = 0;
                 else
                 {
-                    tempDecimal = overallPayroll / overallNumberOfEmployees;
+                    tempDecimal = TotalPay / TotalWorkers;
                 }
 
                 return tempDecimal;
