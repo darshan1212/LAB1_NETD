@@ -5,20 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAB1_NETD"
         mc:Ignorable="d"
-        Title="IncInc" Height="370.584" Width="497.296" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen" MinHeight="400" MinWidth="520">
+        Title="IncInc" Height="420" Width="540" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen" MinHeight="420" MinWidth="540">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="389*"/>
-            <ColumnDefinition Width="125*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="80*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="10*" />
 
         </Grid.RowDefinitions>
-        <TabControl Grid.Row="0"  x:Name="tbcPayrollInterface" SelectionChanged="TabChange" TabIndex="2" Grid.ColumnSpan="2" Margin="0,0,-0.4,36.6" Grid.RowSpan="2">
+        <TabControl Grid.Row="0"  x:Name="tbcPayrollInterface" SelectionChanged="TabChange">
             <TabItem x:Name="tbiPayrollEntry" Header="_Payroll Entry" ToolTip="Display the payroll entry interface" >
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -42,15 +38,15 @@
 
                     </Grid.RowDefinitions>
                     <Label x:Name="lblWorkerFirstName" Content="Worker _First Name:" Target="{Binding ElementName=txtWorkerFirstName}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
-                    <TextBox x:Name="txtWorkerFirstName" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="4" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerFirstName_TextChanged" Height="22" Foreground="Black"/>
+                    <TextBox x:Name="txtWorkerFirstName" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="1" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerFirstName_TextChanged" Height="22" Foreground="Black"/>
                     <Label x:Name="lblWorkerFirstNameError" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
 
                     <Label x:Name="lblWorkerLastName" Content="Worker _Last Name:" Target="{Binding ElementName=txtWorkerLastName}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="lable for worker name"/>
-                    <TextBox x:Name="txtWorkerLastName" Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="3" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerLastName_TextChanged" Height="22" Foreground="Black"/>
+                    <TextBox x:Name="txtWorkerLastName" Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"  TabIndex="1" ToolTip="Enter worker name" Margin="0.4,0,0,2.2"  TextChanged="TxtWorkerLastName_TextChanged" Height="22" Foreground="Black"/>
                     <Label x:Name="lblWorkerLastNameError" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
-
+                    
                     <Label x:Name="lblMessageSent" Content="Messages _Sent:" Grid.Row="5" Target="{Binding ElementName=txtMessageSent}" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                    <TextBox x:Name="txtMessageSent" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" TabIndex="-2" ToolTip="enter number of messages sent by the worker" Margin="0.4,0,0,2.2" TextChanged="TxtMessageSent_TextChanged" Height="22"/>
+                    <TextBox x:Name="txtMessageSent" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" TabIndex="2" ToolTip="enter number of messages sent by the worker" Margin="0.4,0,0,2.2" TextChanged="TxtMessageSent_TextChanged" Height="22"/>
                     <Label x:Name="lblMessageSentError" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFE42B15"></Label>
 
                     <Label x:Name="lblTotalPay" Content="Total Pay:" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="7" ></Label>
@@ -63,8 +59,8 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnCalculatePay" Content="_Calculate Pay" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnCalculatePay_Click" TabIndex="7" Background="#FFE4B1B1" ToolTip="Calculate pay" />
-                        <Button x:Name="btnClearFields" Content="C_lear Fields" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="2" Click="BtnClearFields_Click" TabIndex="8" Background="#FFE4B1B1" ToolTip="Clear Fileds"/>
+                        <Button x:Name="btnCalculatePay" Content="_Calculate Pay" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnCalculatePay_Click" TabIndex="3" Background="#FFE4B1B1" ToolTip="Calculate pay" />
+                        <Button x:Name="btnClearFields" Content="C_lear Fields" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="2" Click="BtnClearFields_Click" TabIndex="5" Background="#FFE4B1B1" ToolTip="Clear Fileds"/>
 
                     </Grid>
 
@@ -100,16 +96,16 @@
 
             </TabItem>
 
-            <TabItem x:Name="tbiEmployeeList" Header="_Employee List" ToolTip="Display List of employees" TabIndex="3">
+            <TabItem x:Name="tbiEmployeeList" Header="_Employee List" ToolTip="Display List of employees">
                 <DataGrid x:Name="dgWorkerList"/>
             </TabItem>
 
-
+                    
         </TabControl>
-        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.2,-0.4,36.4" Grid.RowSpan="2">
-            <Button x:Name="btnExit" Content="E_xit" Width="150" VerticalAlignment="Center" Click="BtnExit_Click" ToolTip="Will Close the application" TabIndex="9"/>
+        <Grid Grid.Row="1">
+            <Button x:Name="btnExit" Content="E_xit" Width="150" VerticalAlignment="Center" Click="BtnExit_Click" ToolTip="Will Close the application"/>
         </Grid>
-        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,0.4,-0.4,0.4">
+        <Grid Grid.Row="2">
             <StatusBar x:Name="stsbrMainPageStatus" ToolTip="Status bar">
                 <!--Source: Hourly Worky Pay solution-->
                 <StatusBarItem HorizontalAlignment="Left" VerticalAlignment="Center">
