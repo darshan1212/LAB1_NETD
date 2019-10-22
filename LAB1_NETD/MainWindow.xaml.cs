@@ -192,7 +192,7 @@ namespace LAB1_NETD
             txtMessageSent.Background = Brushes.White;
             lblMessageSentError.Content = "";
             lblWorkerFirstNameError.Content = "";
-            lblWorkerLastName.Content = "";
+            lblWorkerLastNameError.Content = "";
 
         }
 
