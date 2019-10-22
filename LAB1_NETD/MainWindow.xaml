@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAB1_NETD"
         mc:Ignorable="d"
-        Title="IncInc" Height="370.584" Width="497.296" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen" MinHeight="380.584" MinWidth="507.296">
+        Title="IncInc" Height="370.584" Width="497.296" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen" MinHeight="400" MinWidth="520">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -60,9 +60,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btnCalculatePay" Content="_Calculate Pay" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnCalculatePay_Click" TabIndex="3" Background="#FFE4B1B1" ToolTip="Calculate pay" />
-                        <!--<Button x:Name="btnSummary" Content="_Summary" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnSummary_Click"  TabIndex="4" Background="#FFE4B1B1" ToolTip="Open summary"/>-->
                         <Button x:Name="btnClearFields" Content="C_lear Fields" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="2" Click="BtnClearFields_Click" TabIndex="5" Background="#FFE4B1B1" ToolTip="Clear Fileds"/>
-                        <!--<Button x:Name="btnExit" Content="E_xit" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="3" Click="BtnExit_Click" TabIndex="6" Background="#FFE4B1B1" IsCancel="True" ToolTip="Close the form" IsDefault="True"/>-->
 
                     </Grid>
 
@@ -91,11 +89,9 @@
 
                     <Label x:Name="lblTotalWorkers" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"></Label>
                     <Label x:Name="lblToalMessages" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"></Label>
-                    <Label x:Name="lblTotalPay2" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"></Label>
+                    <Label x:Name="lblTotalPayOverall" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"></Label>
                     <Label x:Name="lblAveragePay" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"></Label>
 
-                    <!--<Button x:Name="btnCloseSummary" Content="_Close Summary" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"--> 
-                <!--Background="#FFE4B1B1" Width="90" Height="36" Click="BtnClose_Click" AutomationProperties.AccessKey="ESC" IsCancel="True" ToolTip="Close Summary" TabIndex="1" IsDefault="True"/>-->
                 </Grid>
 
             </TabItem>
@@ -107,11 +103,16 @@
                     
         </TabControl>
         <Grid Grid.Row="1">
-            <Button Content="E_xit" Width="150" VerticalAlignment="Center" Click="BtnExit_Click" ToolTip="Will Close the application">
+            <Button x:Name="btnExit" Content="E_xit" Width="150" VerticalAlignment="Center" Click="BtnExit_Click" ToolTip="Will Close the application">
             </Button>
         </Grid>
         <Grid Grid.Row="2">
-            <StatusBar></StatusBar>
+            <StatusBar x:Name="stsbrMainPageStatus" ToolTip="Status bar">
+                <!--Source: Hourly Worky Pay solution-->
+                <StatusBarItem HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label x:Name="lblStatus" Content="Current Status: Application in Play mode!"/>
+                </StatusBarItem>
+            </StatusBar>
         </Grid>
 
     </Grid>

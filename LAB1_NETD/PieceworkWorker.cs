@@ -107,6 +107,8 @@ namespace LAB1_NETD // Ensure this namespace matches your own
             const decimal PayRateHigh = 0.035M;
             const decimal PayRateHighest = 0.04M;
 
+
+            
             switch (employeeMessages)
             {
                 // source: https://stackoverflow.com/questions/20147879/switch-case-can-i-use-a-range-instead-of-a-one-number

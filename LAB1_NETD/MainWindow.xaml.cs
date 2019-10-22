@@ -1,6 +1,6 @@
 ﻿// Author: Darshan Patel
-// Last Modified: 04 Oct 2019
-// Lab 2 NetD 3201
+// Last Modified: 22 Oct 2019
+// Lab 3 NetD 3201
 // Description: Main form which will be loaded first to get input of worker name and his or her messages.
 
 
@@ -32,12 +32,7 @@ namespace LAB1_NETD
             InitializeComponent();
             //focusing the first element of the form
             txtWorkerFirstName.Focus();
-
-            // Populating labels with respective values.
-            lblTotalWorkers.Content = PieceworkWorker.TotalWorkers;
-            lblToalMessages.Content = PieceworkWorker.TotalMessages;
-            lblTotalPay.Content = "$ " + string.Format("{0:0.00}", PieceworkWorker.TotalPay);
-            lblAveragePay.Content = "$ " + string.Format("{0:0.00}", PieceworkWorker.AveragePay);
+            UpdateStatus("Nothing to update");
             
         }
 
@@ -56,11 +51,14 @@ namespace LAB1_NETD
               
 
                     //Show the output in labels
-                    lblResultTotalPay.Content = "$ " + string.Format("{0:0.00}", pieceworkWorker.Pay, 2);
+                    lblResultTotalPay.Content = pieceworkWorker.Pay.ToString("c");
 
-                  
-                    // disable calculate button and entry fields
-                    btnCalculatePay.IsEnabled = false;
+                    //updating the status
+                    UpdateStatus("Worker " + pieceworkWorker.FirstName + " " + pieceworkWorker.LastName + " has been entered with " + pieceworkWorker.Messages + " messages and pay of " + pieceworkWorker.Pay.ToString("c"));
+
+
+                // disable calculate button and entry fields
+                btnCalculatePay.IsEnabled = false;
                     txtMessageSent.IsEnabled = false;
                     txtWorkerFirstName.IsEnabled = false;
                     txtWorkerLastName.IsEnabled = false;
@@ -189,6 +187,12 @@ namespace LAB1_NETD
             txtWorkerFirstName.Clear();
             txtWorkerLastName.Clear();
             lblResultTotalPay.Content = "";
+            txtWorkerFirstName.Background = Brushes.White;
+            txtWorkerLastName.Background = Brushes.White;
+            txtMessageSent.Background = Brushes.White;
+            lblMessageSentError.Content = "";
+            lblWorkerFirstNameError.Content = "";
+            lblWorkerLastName.Content = "";
 
         }
 
@@ -228,24 +232,44 @@ namespace LAB1_NETD
             // When the selected tab is the Summary tab, update all summary values
             if (tbcPayrollInterface.SelectedItem == tbiSummary)
             {
-                //lblTotalWorkersOutput.Content = HourlyWorker.TotalWorkers;
-                //lblTotalHoursOutput.Content = HourlyWorker.TotalHours;
-                //lblTotalOvertimeOutput.Content = HourlyWorker.TotalOvertime;
-                //lblTotalPayOutput.Content = HourlyWorker.TotalPay.ToString("c");
-                //lblAveragePayOutput.Content = HourlyWorker.AveragePay.ToString("c");
-                //UpdateStatus("Summary form accessed");
+                //status updating
+                UpdateStatus("Summary of all workers and their pay");
+
+                // Populating labels with respective values.
+                UpdateSummaryTab();
+              
             }
             // When the selected tab is the Employee List tab, refresh the DataGrid
             else if (tbcPayrollInterface.SelectedItem == tbiEmployeeList)
             {
                 dgWorkerList.ItemsSource = PieceworkWorker.AllWorkers.DefaultView;
-               // UpdateStatus("Employee List form accessed");
+                UpdateStatus("Employee List form database");
             }
             // When the selected tab is the Payroll Entry tab, update status
             else if (tbcPayrollInterface.SelectedItem == tbiPayrollEntry)
             {
-              //  UpdateStatus("Payroll Entry form accessed");
+                UpdateStatus("Payroll Entry form accessed");
             }
+        }
+
+        /// <summary>
+        /// This will update the summary form values with latest one
+        /// </summary>
+        private void UpdateSummaryTab()
+        {
+            lblTotalWorkers.Content = PieceworkWorker.TotalWorkers;
+            lblToalMessages.Content = PieceworkWorker.TotalMessages;
+            lblTotalPayOverall.Content = PieceworkWorker.TotalPay.ToString("c");
+            lblAveragePay.Content = PieceworkWorker.AveragePay.ToString("c");
+        }
+
+        /// <summary>
+        /// Accepts a string and writes it to the status bar along with the current date and time
+        /// </summary>
+        /// <param name="updateMessage">a message to write to the status bar</param>
+        private void UpdateStatus(string updateMessage)
+        {
+            lblStatus.Content = DateTime.Now + " - Last Action: " + updateMessage;
         }
     }
 }

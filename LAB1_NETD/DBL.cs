@@ -1,7 +1,7 @@
 ﻿// DBL.cs
 //         Title: DBL - Data Base Layer for Piecework Payroll
 // Last Modified: 
-//    Written By: 
+//    Written By: Kyle Chapman
 // Adapted from PieceworkWorker by Kyle Chapman, October 2019
 // 
 // This is a module with a set of classes allowing for interaction between
