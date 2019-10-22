@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAB1_NETD"
         mc:Ignorable="d"
-        Title="IncInc" Height="370.584" Width="497.296" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen" MinHeight="370.584" MinWidth="497.296">
+        Title="IncInc" Height="370.584" Width="497.296" Icon="Resources/incIcon.png" FontFamily="Verdana" WindowStartupLocation="CenterScreen" MinHeight="380.584" MinWidth="507.296">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,8 +14,8 @@
             <RowDefinition Height="10*" />
 
         </Grid.RowDefinitions>
-        <TabControl Grid.Row="0">
-            <TabItem Header="Payroll Form">
+        <TabControl Grid.Row="0"  x:Name="tbcPayrollInterface" SelectionChanged="TabChange">
+            <TabItem x:Name="tbiPayrollEntry" Header="_Payroll Entry" ToolTip="Display the payroll entry interface" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -70,7 +70,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Summary">
+            <TabItem x:Name="tbiSummary" Header="_Summary" ToolTip="Display the summary interface" Height="22" VerticalAlignment="Top">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -100,18 +100,14 @@
 
             </TabItem>
 
-            <TabItem x:Name="tbiWorkerList" Header="_Employee List" ToolTip="Display List of employees">
-                
+            <TabItem x:Name="tbiEmployeeList" Header="_Employee List" ToolTip="Display List of employees">
                 <DataGrid x:Name="dgWorkerList"/>
-
-
             </TabItem>
 
                     
         </TabControl>
         <Grid Grid.Row="1">
-            <Button Content="E_xit" Width="150" VerticalAlignment="Center">
-
+            <Button Content="E_xit" Width="150" VerticalAlignment="Center" Click="BtnExit_Click" ToolTip="Will Close the application">
             </Button>
         </Grid>
         <Grid Grid.Row="2">

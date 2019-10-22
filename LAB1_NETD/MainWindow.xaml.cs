@@ -193,17 +193,6 @@ namespace LAB1_NETD
         }
 
         /// <summary>
-        /// it opens Summary Form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnSummary_Click(object sender, RoutedEventArgs e)
-        {
-            (new SummaryForm()).Show();
-            
-        }
-
-        /// <summary>
         /// Make Name textbox colour as it is
         /// </summary>
         /// <param name="sender"></param>
@@ -230,9 +219,33 @@ namespace LAB1_NETD
             txtMessageSent.Background = Brushes.White;
         }
 
-        private void TxtWorkerName_TargetUpdated(object sender, DataTransferEventArgs e)
-        {
 
+        /// <summary>
+        /// When the tab selected is changed, check which tab is visible and refresh its contents
+        /// </summary>
+        private void TabChange(object sender, SelectionChangedEventArgs e)
+        {
+            // When the selected tab is the Summary tab, update all summary values
+            if (tbcPayrollInterface.SelectedItem == tbiSummary)
+            {
+                //lblTotalWorkersOutput.Content = HourlyWorker.TotalWorkers;
+                //lblTotalHoursOutput.Content = HourlyWorker.TotalHours;
+                //lblTotalOvertimeOutput.Content = HourlyWorker.TotalOvertime;
+                //lblTotalPayOutput.Content = HourlyWorker.TotalPay.ToString("c");
+                //lblAveragePayOutput.Content = HourlyWorker.AveragePay.ToString("c");
+                //UpdateStatus("Summary form accessed");
+            }
+            // When the selected tab is the Employee List tab, refresh the DataGrid
+            else if (tbcPayrollInterface.SelectedItem == tbiEmployeeList)
+            {
+                dgWorkerList.ItemsSource = PieceworkWorker.AllWorkers.DefaultView;
+               // UpdateStatus("Employee List form accessed");
+            }
+            // When the selected tab is the Payroll Entry tab, update status
+            else if (tbcPayrollInterface.SelectedItem == tbiPayrollEntry)
+            {
+              //  UpdateStatus("Payroll Entry form accessed");
+            }
         }
     }
 }

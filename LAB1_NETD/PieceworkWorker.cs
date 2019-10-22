@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -89,31 +90,48 @@ namespace LAB1_NETD // Ensure this namespace matches your own
             // It is suggested that you use the requirements as a checklist in
             // order to ensure you don't miss any requirements.
 
+
+            // decalring constants Source: Lab 2 Solution provided by Prof. Kyle Chapman
+
+            // Constants representing the various pay thresholds
+            const int MinimumCap = 1;
+            const int ThresholdCapLowest = 2499;
+            const int ThresholdCapLow = 4999;
+            const int ThresholdCapMedium = 7499;
+            const int ThresholdCapHigh = 9999;
+
+            // Constants representing the various pay rates
+            const decimal PayRateLowest = 0.018M;
+            const decimal PayRateLow = 0.024M;
+            const decimal PayRateMedium = 0.03M;
+            const decimal PayRateHigh = 0.035M;
+            const decimal PayRateHighest = 0.04M;
+
             switch (employeeMessages)
             {
                 // source: https://stackoverflow.com/questions/20147879/switch-case-can-i-use-a-range-instead-of-a-one-number
 
                 // business logic for calculating employee pay
-                case int i when (i >= 1 && i <= 2499):
-                    employeePay = (decimal)(0.018 * employeeMessages);
+                case int i when (i >= MinimumCap && i <= ThresholdCapLowest):
+                    employeePay = PayRateLowest * employeeMessages;
                     break;
 
-                case int i when (i >= 2500 && i <= 4999):
-                    employeePay = (decimal)(0.024 * employeeMessages);
+                case int i when (i >= ThresholdCapLowest+1 && i <= ThresholdCapLow):
+                    employeePay = PayRateLow * employeeMessages;
                     break;
 
-                case int i when (i >= 5000 && i <= 7499):
-                    employeePay = (decimal)(0.03 * employeeMessages);
-
-                    break;
-
-                case int i when (i >= 7500 && i <= 10000):
-                    employeePay = (decimal)(0.035 * employeeMessages);
+                case int i when (i >= ThresholdCapLow+1 && i <= ThresholdCapMedium):
+                    employeePay = PayRateMedium * employeeMessages;
 
                     break;
 
-                case int i when (i > 10000):
-                    employeePay = (decimal)(0.04 * employeeMessages);
+                case int i when (i >= ThresholdCapMedium+1 && i <= ThresholdCapHigh+1):
+                    employeePay = PayRateHigh * employeeMessages;
+
+                    break;
+
+                case int i when (i > ThresholdCapHigh+1):
+                    employeePay = PayRateHighest * employeeMessages;
 
                     break;
 
@@ -335,6 +353,18 @@ namespace LAB1_NETD // Ensure this namespace matches your own
 
                 return tempDecimal;
                 
+            }
+        }
+
+        /// <summary>
+        /// Returns a list of all workers in the database as a DataTable
+        /// </summary>
+        /// <returns>a DataTable containing all worker objects</returns>
+        internal static DataTable AllWorkers
+        {
+            get
+            {
+                return DBL.GetEmployeeList();
             }
         }
 
