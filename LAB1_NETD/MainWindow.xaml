@@ -59,7 +59,7 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnCalculatePay" Content="_Calculate Pay" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnCalculatePay_Click" TabIndex="3" Background="#FFE4B1B1" ToolTip="Calculate pay" />
+                        <Button x:Name="btnCalculatePay" Content="_Calculate Pay" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="1" Click="BtnCalculatePay_Click" TabIndex="3" Background="#FFE4B1B1" ToolTip="Calculate pay" IsDefault="True" />
                         <Button x:Name="btnClearFields" Content="C_lear Fields" HorizontalAlignment="Center" Margin="0" Width="90" Grid.Column="2" Click="BtnClearFields_Click" TabIndex="5" Background="#FFE4B1B1" ToolTip="Clear Fileds"/>
 
                     </Grid>
